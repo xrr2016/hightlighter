@@ -1,10 +1,9 @@
-<!--index.wxml-->
-<view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+<!--<view class="wrapper">
+  <view class="og-calendar">
+    <view class="header>
+      <view class="btn month-pre" bindtap="changeDataEvent" data-year="{{data.beforeYear}}" data-month="{{data.beforeMonth}}">
+        <image src="../../icons/prepage.png"></image>
+      </view>
+    </view>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view>
+</view>-->

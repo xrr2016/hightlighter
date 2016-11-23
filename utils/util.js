@@ -16,6 +16,42 @@ function formatNumber(n) {
   return n[1] ? n : '0' + n
 }
 
+function guid(){
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g,function(c){
+    let r = Math.random() * 16 | 0,v = c == 'x' ? r : (r & 0x3 | 0x8)
+    return v.toString(16)
+  })
+}
+
+function log(msg){
+  if(!msg) return
+  if(getApp().settings['debug']) console.log(msg)
+
+  let logs = wx.getStorageSync('logs') || []
+  logs.unshift(msg)
+  wx.setStorageSync('logs', logs)
+}
+
+function promiseHandle(func,options){
+  options = options || {}
+  return new Promise((resolve,reject)=>{
+      if (typeof fuc !== 'fuction'){
+        reject()
+        options.success = resolve
+        options.fail    = reject
+        func(options)
+      }
+  })
+}
+
+
+
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  guid:guid,
+  log:log,
+  promiseHandle:promiseHandle,
+  getDateStr:getDateStr,
+  formatNumber:formatNumber
 }
