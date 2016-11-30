@@ -35,7 +35,7 @@ function log(msg){
 function promiseHandle(func,options){
   options = options || {}
   return new Promise((resolve,reject)=>{
-      if (typeof fuc !== 'fuction'){
+      if (typeof func !== 'fuction'){
         reject()
         options.success = resolve
         options.fail    = reject
@@ -52,6 +52,6 @@ module.exports = {
   guid:guid,
   log:log,
   promiseHandle:promiseHandle,
-  getDateStr:getDateStr,
+  // getDateStr:getDateStr,
   formatNumber:formatNumber
 }
