@@ -1,3 +1,5 @@
+import Promise from 'bluebird'
+
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -34,13 +36,13 @@ function log(msg){
 
 function promiseHandle(func,options){
   options = options || {}
-  return new Promise((resolve,reject)=>{
-      if (typeof func !== 'fuction'){
+  return new Promise((resolve,reject) => {
+      if (typeof func !== 'function'){
         reject()
+        }
         options.success = resolve
         options.fail    = reject
         func(options)
-      }
   })
 }
 
