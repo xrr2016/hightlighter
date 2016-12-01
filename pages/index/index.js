@@ -27,6 +27,7 @@ Page({
    itemList :[],
    editItemList:[]
   },
+
   onLoad: function () {
     let self = this
     promiseHandle(wx.getSystemInfo).then((data)=>{
@@ -36,17 +37,21 @@ Page({
     })
     changeDate.call(this)
   },
+
   onReady(){
     loadItemListData.call(this)
   },
+
   datePickerChangeEvent(e){
     let date = new Date(Date.parse(e.detail.value)) 
     changeDate.call(this,new Date(date.getFullYear(),date.getMonth(),1))
   },
+
   changeDateEvent(e){
     const {year,month} = e.currentTarget.dataset
-    changeData.call(this,new Date(year,parseInt(month)-1 ,1))
+    changeDate.call(this,new Date(year,parseInt(month)-1 ,1))
   },
+
   dateClickEvent(e){
     const {year,month,date} = e.currentTarget.dateset
     const {data} = this.data
@@ -60,15 +65,18 @@ Page({
 
     changeDate.call(this,new Date(year,parseInt(month)-1,date))
   },
+
   showUpdatePanelEvent(){
     showUpdatePanel.call(this)
   },
   closeUpdatePanelEvent(){
     closeUpdatePanel.call(this)
   },
+
   editClickEvent(){
     rhis.setData({isEditMode:true})
   },
+  
   listItemLongTapEvent(e){
     const {isEditMode} = this.data
     const {id} = e.currentTarget.dataset
