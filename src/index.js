@@ -1,15 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-
-class App extends Component {
-  render() {
-    return (
-      <div>
-        Hello World!
-      </div>
-    )
-  }
-}
+import { key } from './api_key'
+import App from './container/app'
 
 ReactDOM.render(
   <App />,
