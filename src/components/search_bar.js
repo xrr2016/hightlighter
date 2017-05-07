@@ -1,9 +1,20 @@
 import React, { Component } from 'react'
 
 class SearchBar extends Component {
-  render() {
+  state = {
+    word: ''
+  }
+
+  handleInputChange = (event) => { 
+    this.setState({ word: event.target.value })
+  }
+
+  render = () => {
     return (
-      <input />             
+      <div>
+        <p>{this.state.word}</p>
+        <input onChange={this.handleInputChange} />             
+      </div>
     )
   }
 }
