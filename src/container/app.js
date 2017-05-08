@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import YTSearch from 'youtube-api-search'  
 import SearchBar from '../components/search_bar'
 import VideoList from '../components/video_list'
+import VideoDetail from '../components/video_detail'
 import { key } from '../api_key'
 
 // YTSearch({ key, term: 'mac pro' }, (res) => { 
@@ -16,7 +17,7 @@ class App extends Component {
     }
   }
   componentDidMount() { 
-    YTSearch({ key, term: 'react' }, (videos) => { 
+    YTSearch({ key, term: 'macbook pro' }, (videos) => { 
       this.setState({ videos })
     })
   }
@@ -34,6 +35,7 @@ class App extends Component {
     return (
       <div className="container">
         <SearchBar handleSearch={this.handleSearch} />
+        <VideoDetail video={this.state.videos[0]}/>
         <VideoList videos={this.state.videos} />
       </div>
     )
