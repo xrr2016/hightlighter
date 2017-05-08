@@ -9,18 +9,26 @@ import { key } from '../api_key'
 // })
 
 class App extends Component {
-  state = {
-    videos: [1, 2, 3, 4, 5]
-  }
-  
-  handleSearch = (term) => {
-    if (term) { 
-      YTSearch({ key, term }, (videos) => {
-        console.log(videos)
-        this.setState({ videos })
-      })
+  constructor(props) { 
+    super(props)
+    this.state = {
+      videos: []
     }
   }
+  componentDidMount() { 
+    YTSearch({ key, term: 'react' }, (videos) => { 
+      this.setState({ videos })
+    })
+  }
+  
+  // handleSearch = (term) => {
+  //   if (term) { 
+  //     YTSearch({ key, term }, (videos) => {
+  //       console.log(videos)
+  //       this.setState({ videos })
+  //     })
+  //   }
+  // }
 
   render= () => {
     return (
