@@ -9,7 +9,8 @@ var body = document.body || document.documentElement.body;
 var defaultOpts = {
   container: body,
   backgroundColor: '#59b9c6',
-  color: '#ffffff'
+  color: '#ffffff',
+  idLength: 10
 };
 
 var HightLighter = function () {
@@ -19,10 +20,14 @@ var HightLighter = function () {
     _classCallCheck(this, HightLighter);
 
     this.opts = opts;
+    this.elements = [];
     for (var key in defaultOpts) {
-      if (defaultOpts.hasOwnProperty(key) && this.opts[key] === 'undefined') {
-        this.opts[key] = defaultOpts[key];
+      if (defaultOpts.hasOwnProperty(key)) {
+        if (!this.opts[key]) {
+          this.opts[key] = defaultOpts[key];
+        }
       }
+      this.randomId = this.randomId.bind(this);
     }
     this.bindEvent(this.opts.container);
   }
@@ -31,15 +36,32 @@ var HightLighter = function () {
     key: 'markText',
     value: function markText() {
       var selectedText = window.getSelection().toString();
-      var mainContent = this.opts.container.innerHTML;
-      var markText = '<span style="background-color:' + this.opts.backgroundColor + ';color: ' + this.opts.color + ';">' + selectedText + '</span>';
+      var id = this.randomId(this.opts.idLength);
+      if (selectedText.length > 0) {
+        var mainContent = this.opts.container.innerHTML;
+        var markText = '<span style="background-color:' + this.opts.backgroundColor + ';color: ' + this.opts.color + ';" id="' + id + '">' + selectedText + '</span>';
 
-      this.opts.container.innerHTML = mainContent.replace(selectedText, markText);
+        this.opts.container.innerHTML = mainContent.replace(selectedText, markText);
+        this.elements.push(document.getElementById(id));
+      }
     }
   }, {
     key: 'bindEvent',
     value: function bindEvent(container) {
       container.addEventListener('mouseup', this.markText.bind(this));
+    }
+  }, {
+    key: 'randomId',
+    value: function randomId(n) {
+      if (n <= 0) {
+        return;
+      }
+      var letters = 'abcdefghijklmnopqrstuvwxyz0123456789';
+      var id = '';
+      while (id.length < n) {
+        id += letters[Math.floor(Math.random() * letters.length)];
+      }
+      return id;
     }
   }]);
 
@@ -50,6 +72,7 @@ var hightlight = function hightlight(opts) {
   return new HightLighter(opts);
 };
 
+window.HightLighter = HightLighter;
 window.hightlight = hightlight;
 
 // export default hightlight

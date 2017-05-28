@@ -3,7 +3,7 @@
 
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/style/style.css">
+  <link rel="stylesheet" href="./style/style.css" />
   <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ"
     crossorigin="anonymous">-->
 </head>
@@ -24,14 +24,45 @@
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum illo, nostrum assumenda, sapiente ad nulla quasi deleniti
       at omnis eius laboriosam a ex blanditiis, dolor rerum fugiat distinctio molestias ut.</p>
   </main>
+  <ul id="markedTextList" class="markedtext-list">
+    <li>items</li>
+  </ul>
+  <input type="text" placeholder="mark" id="markInput" />
+  <button id="submitBtn">Submit</button>
   <footer></footer>
   <script src="./dist/hightlighter.js"></script>
   <script>
     const main = document.getElementById('main')
+    const markedTextList = document.getElementById('markedTextList')
+    const markInput = document.getElementById('markInput')
+    const submitBtn = document.getElementById('submitBtn')
     hightlight({
       container: main,
-      color: '#fff',
-      backgroundColor: 'black',
+      // color: '#fff',
+      // backgroundColor: 'black',
+    })
+    submitBtn.addEventListener('click', (event) => {
+      console.dir(HightLighter)
+      const id =
+        HightLighter.elements[HightLighter.elements.length - 1].getAttribute('id')
+      const li = document.createElement('li')
+      li.innerText = markInput.value
+      li.setAttribute('data-id', id)
+      markedTextList.appendChild(li)
+      markInput.value = ''
+    })
+
+    Array.from(markedTextList.children).forEach(li => {
+      li.addEventListener('mouseover', () => {
+        const id = this.dataset.id
+        const markText = document.getElementById(id)
+        markText.style.backgroundColor = 'green'
+      })
+      li.addEventListener('mouseout', () => {
+        const id = this.dataset.id
+        const markText = document.getElementById(id)
+        markText.style.background = HightLighter.opts.backgroundColor
+      })
     })
   </script>
 </body>
