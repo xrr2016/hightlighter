@@ -6,9 +6,12 @@
   "author": "xrr2016 <xiaoranran1993@163.com>",
   "license": "MIT",
   "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
     "browser-sync": "^2.18.12"
   },
   "scripts": {
-    "dev": "browser-sync start --server --files index.html hightlight.js"
+    "dev": "browser-sync start --server -f index.html ./dist/*.js",
+    "build": "babel src -w -s -d dist"
   }
 }

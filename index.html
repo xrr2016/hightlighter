@@ -13,15 +13,27 @@
     <h1>Hightlight.js</h1>
   </header>
   <main id="main">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit rem quas aut cumque maxime, quos laudantium nobis voluptatem quae ab, dolore ipsam praesentium et, porro voluptas perspiciatis rerum facilis tenetur.</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores inventore porro, soluta, quod ipsa distinctio pariatur consequuntur, at tenetur aliquam doloribus voluptas et corrupti aut reprehenderit ex. Consequuntur, debitis, deleniti!</p>
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum repellendus dolores eveniet minima ullam. Dignissimos nam, accusamus. Suscipit, dignissimos aperiam! Aspernatur rem debitis voluptas perferendis laborum iure non sapiente ipsum.
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quasi expedita molestias, dolor blanditiis sequi facere pariatur ipsam? Alias suscipit illum animi dolorem rerum aut consectetur voluptates ex quibusdam harum!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum illo, nostrum assumenda, sapiente ad nulla quasi deleniti at omnis eius laboriosam a ex blanditiis, dolor rerum fugiat distinctio molestias ut.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit rem quas aut cumque maxime, quos laudantium nobis
+      voluptatem quae ab, dolore ipsam praesentium et, porro voluptas perspiciatis rerum facilis tenetur.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores inventore porro, soluta, quod ipsa distinctio pariatur
+      consequuntur, at tenetur aliquam doloribus voluptas et corrupti aut reprehenderit ex. Consequuntur, debitis, deleniti!</p>
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum repellendus dolores eveniet minima ullam. Dignissimos nam,
+    accusamus. Suscipit, dignissimos aperiam! Aspernatur rem debitis voluptas perferendis laborum iure non sapiente ipsum.
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet quasi expedita molestias, dolor blanditiis sequi facere
+      pariatur ipsam? Alias suscipit illum animi dolorem rerum aut consectetur voluptates ex quibusdam harum!</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum illo, nostrum assumenda, sapiente ad nulla quasi deleniti
+      at omnis eius laboriosam a ex blanditiis, dolor rerum fugiat distinctio molestias ut.</p>
   </main>
-    <input type="text" placeholder="input something" />
   <footer></footer>
-    <script src="./hightlight.js"></script>
+  <script src="./dist/hightlighter"></script>
+  <script>
+    const main = document.getElementById('main')
+    hightlight({
+      container: main,
+      color: '#fff',
+      backgroundColor: 'yellow',
+    })
+  </script>
 </body>
 
 </html>
