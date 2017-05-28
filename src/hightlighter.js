@@ -17,22 +17,16 @@ class HightLighter {
     this.bindEvent(this.opts.container)
   }
 
-  getSelection() {
-    if (window.getSelection) {
-      const selection = window.getSelection().toString()
-      return selection
-    }
-  }
-
-  markText(opts) {
-    const mainContent = opts.container.innerHTML
-    const selectedText = this.getSelectedText()
-    const markText = `<span style="background-color: ${opts.backgroundColor};                     color: ${opts.color};">${selectedText}</span>`
-    opts.container.innerHTML = mainContent.replace(selectedText, markText)
+  markText() {
+    const selectedText = window.getSelection().toString()
+    const mainContent = this.opts.container.innerHTML
+    const markText = `<span style="background-color:${this.opts.backgroundColor};color: ${this.opts.color};">${selectedText}</span>`
+    
+    this.opts.container.innerHTML = mainContent.replace(selectedText, markText)
   }
 
   bindEvent(container) {
-    container.addEventListener('mouseup', this.markText)
+    container.addEventListener('mouseup', this.markText.bind(this))
   }
 
 }
@@ -41,4 +35,6 @@ const hightlight = (opts) => {
   return new HightLighter(opts)
 }
 
-export default hightlight
+window.hightlight = hightlight
+
+// export default hightlight
