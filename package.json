@@ -1,0 +1,14 @@
+{
+  "name": "hightlighter",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:xrr2016/hightlighter.git",
+  "author": "xrr2016 <xiaoranran1993@163.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.18.12"
+  },
+  "scripts": {
+    "dev": "browser-sync start --server --files index.html hightlight.js"
+  }
+}
