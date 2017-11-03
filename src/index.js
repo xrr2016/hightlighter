@@ -1,6 +1,7 @@
 import _ from 'lodash'
 import './style.css'
 import avatar from './avatar.jpg'
+import Data from './data.xml'
 
 function component () {
   let element = document.createElement('div')
@@ -8,10 +9,7 @@ function component () {
   element.innerHTML = _.join(['Hello', 'Webpack!'], ' ')
   element.classList.add('hello')
 
-  const img = new Image()
-  img.src = avatar
-
-  element.appendChild(img)
+  console.log(Data)
 
   return element 
 }
