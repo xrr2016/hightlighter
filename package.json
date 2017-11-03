@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "webpack"
+    "build": "webpack"
   },
   "repository": "git@github.com:xrr2016/webpack-learn.git",
   "author": "xrr2016 <xiaoranran1993@163.com>",
@@ -12,6 +12,12 @@
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.5",
+    "style-loader": "^0.19.0",
     "webpack": "^3.8.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4"
   }
 }
