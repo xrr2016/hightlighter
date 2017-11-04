@@ -1,16 +1,19 @@
-import _ from 'lodash'
-import paintMe from './paint'
 import './style.css'
+import { cube } from './math'
+import _ from 'lodash'
+
+if (process.env.NODE_ENV !== 'production') {
+  console.log('Looks like we are in development mode!')
+}
 
 function component() {
-  let element = document.createElement('div')
-  let btn = document.createElement('button')
+  let element = document.createElement('pre')
 
-  element.innerHTML = _.join(['Hello', 'Webpack!'], ' ')
-  btn.innerHTML = 'Click Me'
-  btn.addEventListener('click', paintMe)
-
-  element.appendChild(btn)
+  element.innerHTML = [
+    'Hello Wobpack!',
+    '5 cubed is equal to',
+    `${cube(5)}`
+  ].join('\n\n')
 
   return element
 }
@@ -19,8 +22,7 @@ let element = component()
 document.body.appendChild(element)
 
 if (module.hot) {
-  module.hot.accept('./paint.js', function() {
-    console.log('Accepting the updated printMe module!')
+  module.hot.accept('./math.js', function() {
     document.body.removeChild(element)
     element = component()
     document.body.appendChild(element)
