@@ -1,5 +1,4 @@
 import './style.css'
-import { cube } from './math'
 import _ from 'lodash'
 
 if (process.env.NODE_ENV !== 'production') {
@@ -7,13 +6,20 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 function component() {
-  let element = document.createElement('pre')
+  var element = document.createElement('div')
+  var button = document.createElement('button')
+  var br = document.createElement('br')
 
-  element.innerHTML = [
-    'Hello Wobpack!',
-    '5 cubed is equal to',
-    `${cube(5)}`
-  ].join('\n\n')
+  button.innerHTML = 'Click me and look at the console!'
+  element.innerHTML = _.join(['Hello', 'webpack'], ' ')
+  element.appendChild(br)
+  element.appendChild(button)
+
+  button.onclick = e =>
+    import('./print').then(module => {
+      var print = module.default
+      print()
+    })
 
   return element
 }

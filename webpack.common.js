@@ -2,6 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   entry: {
@@ -14,8 +15,10 @@ module.exports = {
       title: 'Production'
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'common'
-    })
+      name: 'common',
+      minChunks: Infinity
+    }),
+    new ExtractTextPlugin('styles.css')
   ],
   output: {
     filename: '[name].bundle.js',
@@ -24,8 +27,16 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        include: path.resolve(__dirname, 'src'),
+        loader: 'babel-loader'
+      },
+      {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
