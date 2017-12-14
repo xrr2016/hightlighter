@@ -1,0 +1,22 @@
+:root {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  background: #000428;
+  background: -webkit-linear-gradient(to left, #004e92, #000428);
+}
+
+body:fullscreen {
+  background: #141e30;
+  background: -webkit-linear-gradient(to left, #243b55, #141e30);
+  background: linear-gradient(to left, #243b55, #141e30);
+}
