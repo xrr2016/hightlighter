@@ -3,10 +3,13 @@
   "plugins": ["flowtype", "compat"],
   "rules": {
     "semi": [2, "never"],
+    "comma-dangle": "off",
+    "newline-before-return": "off",
     "no-unexpected-multiline": 2,
     "compat/compat": 2
   },
   "env": {
-    "jest": true
+    "jest": true,
+    "browser": true
   }
 }

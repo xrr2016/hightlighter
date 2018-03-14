@@ -5,20 +5,37 @@
   "repository": "git@github.com:xrr2016/js-from-scratch.git",
   "author": "xrr2016 <xiaoranran1993@163.com>",
   "scripts": {
-    "start": "babel-node src",
-    "test": "eslint src && flow && jest --coverage",
-    "precommit": "yarn test",
-    "prepush": "yarn test"
+    "start": "yarn dev:start",
+    "dev:start": "nodemon -e js,jsx --ignore lib --ignore dist --exec babel-node src/server",
+    "dev:wds": "webpack-dev-server  --progress",
+    "prod:build":
+      "rimraf lib dist && babel src -d lib --ignore .test.js && cross-env NODE_ENV=production webpack -p --progress",
+    "prod:start": "cross-env NODE_ENV=production pm2 start lib/server && pm2 logs",
+    "prod:stop": "pm2 delete server",
+    "lint": "eslint src webpack.config.babel.js --ext .js,.jsx",
+    "test": "yarn lint && flow && jest --coverage"
   },
   "license": "MIT",
   "browserslist": ["> 1%"],
-  "dependencies": {},
+  "dependencies": {
+    "babel-plugin-flow-react-proptypes": "^21.0.0",
+    "babel-polyfill": "^6.26.0",
+    "babel-preset-react": "^6.24.1",
+    "compression": "^1.7.2",
+    "express": "^4.16.3",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^4.0.0"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.2",
     "babel-jest": "^22.4.1",
+    "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
+    "cross-env": "^5.1.4",
     "eslint": "^4.18.2",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-plugin-compat": "^2.2.0",
@@ -28,6 +45,12 @@
     "eslint-plugin-react": "^7.4.0",
     "flow-bin": "^0.67.1",
     "husky": "^0.14.3",
-    "jest": "^22.4.2"
+    "jest": "^22.4.2",
+    "nodemon": "^1.17.2",
+    "pm2": "^2.10.1",
+    "rimraf": "^2.6.2",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.12",
+    "webpack-dev-server": "^3.1.1"
   }
 }
