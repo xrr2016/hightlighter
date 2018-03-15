@@ -2,7 +2,7 @@
 import path from 'path'
 import webpack from 'webpack'
 
-import { WDS_PROT } from './src/shared/config'
+import { WDS_PORT } from './src/shared/config'
 import { isProd } from './src/shared/util'
 
 export default {
@@ -11,7 +11,7 @@ export default {
   output: {
     filename: 'js/bundle.js',
     path: path.resolve(__dirname, 'dist'),
-    publicPath: isProd ? '/static/' : `http://localhost:${WDS_PROT}/dist`
+    publicPath: isProd ? '/static/' : `http://localhost:${WDS_PORT}/dist`
   },
   module: {
     rules: [{ test: /\.(js|jsx)$/, use: 'babel-loader', exclude: /node_modules/ }]
@@ -21,7 +21,7 @@ export default {
     extensions: ['.js', '.jsx']
   },
   devServer: {
-    port: WDS_PROT,
+    port: WDS_PORT,
     hot: true,
     headers: {
       'Access-Control-Allow-Origin': '*'
