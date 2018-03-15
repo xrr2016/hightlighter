@@ -10,11 +10,18 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux'
 import thunkMiddleware from 'redux-thunk'
 import Immutable from 'immutable'
 
+import $ from 'jquery'
+import Tether from 'tether'
+
 import App from '../shared/App'
 import helloReducer from '../shared/reducer/hello'
-import { APP_CONTAINER_SELECTOR } from '../shared/config'
+import { APP_CONTAINER_SELECTOR, JSS_SSR_SELECTOR } from '../shared/config'
 import { isProd } from '../shared/util'
 import setUpSocket from './socket'
+
+window.jQuery = $
+window.Tether = Tether
+require('bootstrap')
 
 /* eslint-disable no-underscore-dangle */
 const composeEnhancers = (isProd ? null : window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose
@@ -30,6 +37,7 @@ const store = createStore(
 )
 
 // flow-disable-next-line
+/* eslint-disable */
 const rootEl = document.querySelector(APP_CONTAINER_SELECTOR)
 
 const wrapApp = (AppComponent, reduxStore) => (
@@ -54,5 +62,9 @@ if (module.hot) {
     ReactDOM.render(wrapApp(NextApp), rootEl)
   })
 }
+
+const jssServerSide = document.querySelector(JSS_SSR_SELECTOR)
+// flow-disable-next-line
+jssServerSide.parentNode.removeChild(jssServerSide)
 
 setUpSocket(store)

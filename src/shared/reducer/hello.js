@@ -1,8 +1,14 @@
 // @flow
+
 import Immutable from 'immutable'
 import type { fromJS as Immut } from 'immutable'
 
-import { SAY_HELLO, SAY_HELLO_ASYNC_REQUEST, SAY_HELLO_ASYNC_FAILURE, SAY_HELLO_ASYNC_SUCCESS } from '../action/hello'
+import {
+  SAY_HELLO,
+  SAY_HELLO_ASYNC_REQUEST,
+  SAY_HELLO_ASYNC_FAILURE,
+  SAY_HELLO_ASYNC_SUCCESS
+} from '../action/hello'
 
 const initialState = Immutable.fromJS({
   message: 'Initial reducer message',

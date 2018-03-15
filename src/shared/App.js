@@ -13,9 +13,9 @@ import HelloAsyncPage from './pages/HelloAsync'
 import NotFoundPage from './pages/NotFound'
 
 import { HOME_PAGE_ROUTE, HELLO_PAGE_ROUTE, HELLO_ASYNC_PAGE_ROUTE } from './routes'
-
+/* eslint-disable */
 const App = () => (
-  <main>
+  <main style={{ paddingTop: 54 }}>
     <Helmet titleTemplate={`%s | ${APP_NAME}`} defaultTitle={APP_NAME} />
     <Nav />
     <Switch>
