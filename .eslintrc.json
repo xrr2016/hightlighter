@@ -6,7 +6,12 @@
     "comma-dangle": "off",
     "newline-before-return": "off",
     "no-unexpected-multiline": 2,
-    "compat/compat": 2
+    "compat/compat": 2,
+    "arrow-body-style": "off",
+    "arrow-parens": "off"
+  },
+  "settings": {
+    "polyfills": ["fetch"]
   },
   "env": {
     "jest": true,
